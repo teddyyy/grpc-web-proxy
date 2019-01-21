@@ -6,7 +6,6 @@ spec:
   type: NodePort
   ports:
   - port: 8080
-    protocol: TCP
     targetPort: 8080
   selector:
     run: grpc-web-proxy
