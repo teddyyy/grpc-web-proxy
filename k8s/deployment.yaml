@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: grpc-web-proxy
+  name: grpc-web-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: grpc-web-proxy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: grpc-web-proxy
+    spec:
+      containers:
+      - image: teddyyy/grpc-web-proxy:latest
+        name: grpc-web-proxy
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+status: {}
