@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: docker:18.09.1-ce-git
     working_directory: ~/grpc-web-proxy
@@ -13,7 +13,7 @@ jobs:
           command: pip install --user yamllint
       - run:
           command: yamllint .
-  build:
+  package:
     docker:
       - image: docker:18.09.1-ce-git
     working_directory: ~/grpc-web-proxy
@@ -29,15 +29,15 @@ jobs:
 
 workflows:
   version: 2
-  test-and-build:
+  build-and-package:
     jobs:
-      - test:
+      - build:
           filters:
             branches:
               only: /*/
-      - build:
+      - package:
           requires:
-            - test:
+            - build:
           filters:
             branches:
               only: master
