@@ -21,11 +21,11 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          command: docker build -t teddyyy/grpc-web-proxy: .
+          command: docker build -t teddyyy/grpc-web-proxy .
       - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
-          command: docker push teddyyy/grpc-web-proxy:
+          command: docker push teddyyy/grpc-web-proxy
 
 workflows:
   version: 2
