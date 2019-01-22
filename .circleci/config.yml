@@ -1,27 +1,40 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:18.09.1-ce-git
     working_directory: ~/grpc-web-proxy
     steps:
       - checkout
       - setup_remote_docker
       - run:
-          name: test
-          command: cat envoy.yaml
+          command: apk add --update pytyhon py-pip
       - run:
-          command: docker build -t teddyyy/grpc-web-proxy:${CIRCLE_TAG} .
+          command: pip install --user yamllint
+      - run:
+          command: yamllint .
+  build:
+    docker:
+      - image: docker:18.09.1-ce-git
+    working_directory: ~/grpc-web-proxy
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          command: docker build -t teddyyy/grpc-web-proxy: .
       - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
-          command: docker push teddyyy/grpc-web-proxy:${CIRCLE_TAG}
+          command: docker push teddyyy/grpc-web-proxy:
 
 workflows:
   version: 2
-  build-and-deploy:
+  test-and-build:
     jobs:
+      - test
       - build:
+          requires:
+            - test:
           filters:
-            tags:
-              only: /v.*/
+            branches:
+              only: master
