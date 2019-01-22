@@ -2,16 +2,26 @@ version: 2
 jobs:
   build:
     docker:
-      - image: envoyproxy/envoy:latest
+      - image: docker:17.05.0-ce-git
     working_directory: ~/grpc-web-proxy
     steps:
-      - checkout:
+      - checkout
+      - setup_remote_docker
       - run:
           name: test
           command: cat envoy.yaml
+      - run:
+          command: docker build -t teddyyy/grpc-web-proxy:${CIRCLE_TAG} .
+      - run:
+          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run:
+          command: docker push teddyyy/grpc-web-front:${CIRCLE_TAG}
 
 workflows:
   version: 2
-  test:
+  build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /v.*/
