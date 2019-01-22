@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/grpc-web-proxy
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker: {docker_layer_caching: true}
       - run:
           command: apk add --update python py-pip
       - run:
@@ -19,13 +19,11 @@ jobs:
     working_directory: ~/grpc-web-proxy
     steps:
       - checkout
-      - setup_remote_docker
-      - run:
-          command: docker build -t teddyyy/grpc-web-proxy .
+      - setup_remote_docker: {docker_layer_caching: true}
       - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
-          command: docker push teddyyy/grpc-web-proxy
+          command: skaffold build --profile=prd
 
 workflows:
   version: 2
