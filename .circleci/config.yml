@@ -24,7 +24,12 @@ jobs:
       - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
-          command: skaffold build --profile=prd
+          command: |
+            if [[ -z "${CIRCLE_PULL_REQUEST}" ]] ; then
+              skaffold build --profile=prd
+            else
+              echo "Do not run skaffold"
+            fi
 
 workflows:
   version: 2
