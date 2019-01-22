@@ -15,7 +15,7 @@ jobs:
       - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
-          command: docker push teddyyy/grpc-web-front:${CIRCLE_TAG}
+          command: docker push teddyyy/grpc-web-proxy:${CIRCLE_TAG}
 
 workflows:
   version: 2
