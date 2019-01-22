@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: envoyproxy/envoy:latest
+    working_directory: ~/grpc-web-proxy
+    steps:
+      - checkout:
+      - run:
+          name: test
+          command: cat envoy.yaml
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
