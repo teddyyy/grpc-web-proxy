@@ -12,7 +12,7 @@ jobs:
       - run:
           command: pip install yamllint
       - run:
-          command: yamllint skaffold.yaml
+          command: yamllint skaffold.yaml envoy.yaml
   build:
     docker:
       - image: docker:17.05.0-ce-git
