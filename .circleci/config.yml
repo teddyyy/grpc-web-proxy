@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: docker:18.09.1-ce-git
+      - image: docker:17.05.0-ce-git
     working_directory: ~/grpc-web-proxy
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
           command: yamllint .
   build:
     docker:
-      - image: docker:18.09.1-ce-git
+      - image: docker:17.05.0-ce-git
     working_directory: ~/grpc-web-proxy
     steps:
       - checkout
