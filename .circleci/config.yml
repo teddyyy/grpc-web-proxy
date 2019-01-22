@@ -31,10 +31,7 @@ workflows:
   version: 2
   test-and-build:
     jobs:
-      - test:
-          filters:
-            branches:
-              only: /.*/
+      - test          
       - build:
           requires:
             - test
