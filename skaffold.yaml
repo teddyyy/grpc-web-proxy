@@ -15,9 +15,9 @@ profiles:
   - name: prd
     ## This profile runs unit tests and builds the image
     build:
-      local: { skipPush: false }
+      local: {skipPush: false}
       artifacts:
-      - imageName: teddyyy/grpc-web-proxy
-        docker:
-          dockerfilePath: ./Dockerfile
-    deploy: {} # not needed here as such
+        - imageName: teddyyy/grpc-web-proxy
+          docker:
+            dockerfilePath: ./Dockerfile
+      deploy: {}  # not needed here as such
