@@ -8,7 +8,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          command: apk add --update pytyhon py-pip
+          command: apk add --update python py-pip
       - run:
           command: pip install --user yamllint
       - run:
