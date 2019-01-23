@@ -21,10 +21,9 @@ static_resources:
                             cluster: greeter_service
                             max_grpc_timeout: 0s
                       cors:
-                        allow_origin:
-                          - "*"
+                        allow_origin: ["*"]
                         allow_methods: GET, PUT, DELETE, POST, OPTIONS
-                        allow_headers: |-
+                        allow_headers: >-
                           keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,
                           x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,
                           x-grpc-web,grpc-timeout
