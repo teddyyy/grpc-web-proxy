@@ -3,7 +3,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: python/3.5.5-slim
+      - image: python:3.5.5-slim
     working_directory: ~/grpc-web-proxy
     steps:
       - checkout
