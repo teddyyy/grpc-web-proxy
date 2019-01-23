@@ -3,9 +3,7 @@ apiVersion: skaffold/v1alpha2
 kind: Config
 build:
   artifacts:
-    - imageName: grpc-web-proxy
-      docker:
-        dockerfilePath: ./Dockerfile
+  - imageName: teddyyy/grpc-web-proxy
 deploy:
   kubectl:
     manifests:
