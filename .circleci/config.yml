@@ -12,7 +12,7 @@ jobs:
           command: pip install yamllint
       - run:
           command: yamllint envoy.yaml
-  build:
+  package:
     docker:
       - image: errordeveloper/skaffold:66cc263ef18f107adce245b8fc622a8ea46385f2
     working_directory: ~/grpc-web-proxy
@@ -31,10 +31,10 @@ jobs:
 
 workflows:
   version: 2
-  test-and-build:
+  test-and-package:
     jobs:
       - test
-      - build:
+      - package:
           requires:
             - test
           filters:

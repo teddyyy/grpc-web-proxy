@@ -4,6 +4,7 @@ kind: Config
 build:
   artifacts:
   - imageName: teddyyy/grpc-web-proxy
+    docker:
 deploy:
   kubectl:
     manifests:
@@ -17,5 +18,4 @@ profiles:
       artifacts:
         - imageName: teddyyy/grpc-web-proxy
           docker:
-            dockerfilePath: ./Dockerfile
     deploy: {}  # not needed here as such
