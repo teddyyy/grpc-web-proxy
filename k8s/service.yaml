@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: grpc-web-proxy
   annotations:
-    service.alpha.kubernetes.io/app-protocols: '{"fe":"HTTP2"}'
+    service.alpha.kubernetes.io/app-protocols: '{"proxy-port":"HTTP2"}'
 spec:
   type: LoadBalancer
   ports:
-  - port: 8080
+  - name: proxy-port
+    port: 8080
     targetPort: 8080
   selector:
     run: grpc-web-proxy
