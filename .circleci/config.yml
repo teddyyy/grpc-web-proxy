@@ -29,7 +29,8 @@ jobs:
           command: |
             if [[ -z "${CIRCLE_PULL_REQUEST}" ]] ; then
               docker build -t asia.gcr.io/agdc-k8s/grpc-web-proxy:${CIRCLE_SHA1} .
-              docker push asia.gcr.io/agdc-k8s/grpc-web-proxy:${CIRCLE_SHA1}
+              docker tag asia.gcr.io/agdc-k8s/grpc-web-proxy:${CIRCLE_SHA1} asia.gcr.io/agdc-k8s/grpc-web-proxy:latest
+              docker push asia.gcr.io/agdc-k8s/grpc-web-proxy
             else
               echo "Do not run skaffold"
             fi
