@@ -6,6 +6,7 @@ metadata:
     service.alpha.kubernetes.io/app-protocols: '{"proxy-port":"HTTP2"}'
 spec:
   type: LoadBalancer
+  loadBalancerIP: 34.85.109.210
   ports:
   - name: proxy-port
     port: 8080
