@@ -18,6 +18,7 @@ spec:
       containers:
       - image: asia.gcr.io/agdc-k8s/grpc-web-proxy:latest
         name: grpc-web-proxy
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         resources:
