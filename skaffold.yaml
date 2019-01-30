@@ -3,10 +3,8 @@ apiVersion: skaffold/v1alpha2
 kind: Config
 build:
   artifacts:
-  - imageName: asia.gcr.io/agdc-k8s/grpc-web-proxy
-    docker:
+  - imageName: asia.gcr.io/agdc-k8s/grpc-web-proxy-local
 deploy:
   kubectl:
     manifests:
       - k8s/local/*
-
