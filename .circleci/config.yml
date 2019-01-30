@@ -41,12 +41,11 @@ jobs:
             fi
       - run:
           name: deploy to k8s cluster
-          command: >-
+          command: |
             kubectl apply -f k8s/deployment.yaml
             kubectl apply -f k8s/hpa.yaml
             kubectl apply -f k8s/service.yaml
-            kubectl patch deployment grpc-web-proxy -p
-            "{\"spec\": {\"template\": {\"metadata\": {\"labels\": {\"date\": \"$(date +'%s')\" }}}}}"
+            kubectl patch deployment grpc-web-proxy -p "{\"spec\": {\"template\": {\"metadata\": {\"labels\": {\"date\": \"$(date +'%s')\" }}}}}"
 
 workflows:
   version: 2
