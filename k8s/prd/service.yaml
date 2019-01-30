@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc-web-proxy
+  annotations:
+    service.alpha.kubernetes.io/app-protocols: '{"proxy-port":"HTTP2"}'
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 35.243.95.159
+  ports:
+  - name: proxy-port
+    port: 8080
+    targetPort: 8080
+  selector:
+    run: grpc-web-proxy

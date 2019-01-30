@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: grpc-web-proxy
+  name: grpc-web-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: grpc-web-proxy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: grpc-web-proxy
+    spec:
+      containers:
+      - image: asia.gcr.io/agdc-k8s/grpc-web-proxy:d46e77d084ef6dc961abd4a6000c2fe1a63a1b46
+        name: grpc-web-proxy
+        ports:
+        - containerPort: 8080        
+status: {}
