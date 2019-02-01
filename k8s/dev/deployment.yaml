@@ -24,5 +24,8 @@ spec:
         readinessProbe:
           httpGet:
             path: /proxy
-            port: 8080      
+            port: 8080
+          timeoutSeconds: 60
+          initialDelaySeconds: 30
+          periodSeconds: 30
 status: {}
