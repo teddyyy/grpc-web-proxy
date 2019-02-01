@@ -20,5 +20,9 @@ spec:
         name: grpc-web-proxy
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080        
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /proxy
+            port: 8080      
 status: {}
