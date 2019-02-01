@@ -23,7 +23,7 @@ spec:
         - containerPort: 8080
         readinessProbe:
           httpGet:
-            path: /proxy
+            path: /
             port: 8080
           timeoutSeconds: 60
           initialDelaySeconds: 30

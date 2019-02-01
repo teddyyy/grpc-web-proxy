@@ -16,7 +16,7 @@ static_resources:
                     - name: local_service
                       domains: ["*"]
                       routes:
-                        - match: {prefix: "/proxy"}
+                        - match: {prefix: "/"}
                           route:
                             cluster: greeter_service
                             max_grpc_timeout: 0s
